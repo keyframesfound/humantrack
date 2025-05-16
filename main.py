@@ -1,8 +1,7 @@
 import cv2
 import mediapipe as mp
-import numpy as np  # Add numpy for mathematical calculations
- 
-# Initialize MediaPipe Holistic and Drawing utilities
+import numpy as np 
+
 mp_holistic = mp.solutions.holistic
 mp_drawing = mp.solutions.drawing_utils
  
@@ -20,11 +19,11 @@ def calculate_angle(a, b, c):
     b = np.array(b)
     c = np.array(c)
     
-    # Calculate vectors
+    # Vectors
     ba = a - b
     bc = c - b
     
-    # Calculate angle using dot product
+    # Calculate angle
     cosine_angle = np.dot(ba, bc) / (np.linalg.norm(ba) * np.linalg.norm(bc))
     angle = np.arccos(cosine_angle)
     
@@ -34,7 +33,7 @@ def calculate_vertical_angle(upper_point, lower_point):
     """
     Calculate angle from vertical line
     """
-    vertical = np.array([0, -1])  # Vertical vector pointing up
+    vertical = np.array([0, -1])  # Vertical vector 
     actual = np.array([
         lower_point[0] - upper_point[0],
         lower_point[1] - upper_point[1]
